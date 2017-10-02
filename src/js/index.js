@@ -3,7 +3,7 @@ import Styles from '../styles/main.scss';
 
 import io from 'socket.io-client';
 
-const ip = '192.168.1.7';
+const ip = '192.168.1.2';
 const port = '3000';
 const socket = io.connect(`http://${ip}:${port}`);
 
@@ -61,7 +61,7 @@ const video = [
 		text: 'start',
 		callback() {
 			socket.emit('controller', {
-				event: 'seek-video',
+				event: 'start',
 				payload: 0,
 			});
 		}
