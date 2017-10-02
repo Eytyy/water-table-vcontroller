@@ -1,0 +1,36 @@
+body {
+  background: #000;
+  font-family: Courier New, Courier, monospace;
+  color: #FFF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.btn {
+  appearance: none;
+  background: none;
+  border: 1px solid #FFF;
+  color: #FFF;
+  font-size: 20px;
+  font-family: Courier New, Courier, monospace;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.label {
+  color: #FFF;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.controller-set {
+  display: block;
+  margin-bottom: 30px;
+}
