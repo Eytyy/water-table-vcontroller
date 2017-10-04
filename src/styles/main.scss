@@ -1,36 +1,89 @@
-body {
-  background: #000;
-  font-family: Courier New, Courier, monospace;
-  color: #FFF;
+@font-face {
+	font-family: 'ZeitungMonoPro-Bold';
+	src: url('../fonts/ZeitungMonoPro-Bold.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/ZeitungMonoPro-Bold.woff2') format('woff2'),
+		 url('../fonts/ZeitungMonoPro-Bold.woff') format('woff'),
+		 url('../fonts/ZeitungMonoPro-Bold.ttf') format('truetype'),
+		 url('../fonts/ZeitungMonoPro-Bold.svg#ZeitungMonoPro-Bold') format('svg');
 }
 
+ 
+@font-face {
+	font-family: 'ZeitungMonoPro-Reg';
+	src: url('../fonts/ZeitungMonoPro-Regular.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/ZeitungMonoPro-Regular.woff2') format('woff2'),
+		 url('../fonts/ZeitungMonoPro-Regular.woff') format('woff'),
+		 url('../fonts/ZeitungMonoPro-Regular.ttf') format('truetype'),
+		 url('../fonts/ZeitungMonoPro-Regular.svg#ZeitungMonoPro-Regular') format('svg');
+}
+
+%bold-font  {
+	font-family: 'ZeitungMonoPro-Bold';
+	font-weight: normal;
+    font-style: normal;
+}
+
+
+%regular-font {
+	font-family: 'ZeitungMonoPro-Reg';
+	font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  @extend %regular-font;
+  background: #000;
+  color: #FFF;
+  margin: 0;
+  padding: 40px 40px 0;
+}
+ 
 * {
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  display: inline-block;
+  margin-right: 40px;
+  text-align: center;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.button-label {
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
 .btn {
   appearance: none;
-  background: none;
+  background: #FFF;
   border: 1px solid #FFF;
   color: #FFF;
-  font-size: 20px;
+  font-size: 16x;
   font-family: Courier New, Courier, monospace;
   display: inline-block;
-  border-radius: 5px;
+  border-radius: 100%;
   padding: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  margin: 0 auto;
 }
 
 .label {
   color: #FFF;
   display: block;
-  margin-bottom: 10px;
-  font-size: 18px;
+  margin-bottom: 20px;
+  font-size: 14px;
   font-weight: bold;
+  text-decoration: underline;
 }
 
 .controller-set {
   display: block;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
