@@ -3,7 +3,9 @@ import Styles from '../styles/main.scss';
 
 import io from 'socket.io-client';
 
-const ip = '192.168.1.2';
+// const ip = '192.168.1.2';
+const ip = '192.168.1.3';
+
 const port = '3000';
 const socket = io.connect(`http://${ip}:${port}`);
 
@@ -56,8 +58,8 @@ const toggle = [
 // video buttons
 const video = [
 	{
-		id: 'seek-video-start',
-		name: 'seek video to start',
+		id: 'start',
+		name: 'start',
 		text: 'start',
 		callback() {
 			socket.emit('controller', {
@@ -67,24 +69,35 @@ const video = [
 		}
 	},
 	{
-		id: 'seek-video-middle',
-		name: 'seek video to 1950',
-		text: '1950',
+		id: 'seek-video-start',
+		name: 'seek video to start',
+		text: '1960',
 		callback() {
 			socket.emit('controller', {
 				event: 'seek-video',
-				payload: 1,
+				payload: 0,
+			});
+		}
+	},
+	{
+		id: 'seek-video-middle',
+		name: 'seek video to 1950',
+		text: '1980',
+		callback() {
+			socket.emit('controller', {
+				event: 'seek-video',
+				payload: 3,
 			});
 		}
 	},
 	{
 		id: 'seek-video-end',
 		name: 'seek video to 2000',
-		text: '2000',
+		text: '2010',
 		callback() {
 			socket.emit('controller', {
 				event: 'seek-video',
-				payload: 2,
+				payload: 15,
 			});
 		}
 	},
@@ -92,23 +105,12 @@ const video = [
 // svg buttons
 const svgs = [
 	{
-		id: 'svg-off',
-		name: 'turn off layer',
-		text: 'off',
-		callback() {
-			socket.emit('controller', {
-				event: 'toggle-svg',
-				payload: 0,
-			});
-		}
-	},
-	{
 		id: 'svg-topography',
 		name: 'show topography layer',
 		text: 'topography',
 		callback() {
 			socket.emit('controller', {
-				event: 'toggle-svg',
+				event: 'svg-1',
 				payload: 1,
 			});
 		}
@@ -119,7 +121,7 @@ const svgs = [
 		text: 'info',
 		callback() {
 			socket.emit('controller', {
-				event: 'toggle-svg',
+				event: 'svg-2',
 				payload: 2,
 			});
 		}
