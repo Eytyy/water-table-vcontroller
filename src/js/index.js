@@ -4,17 +4,14 @@ import Styles from '../styles/main.scss';
 import io from 'socket.io-client';
 
 // const ip = '192.168.1.2';
-const ip = '192.168.1.3';
-
+// const ip = '192.168.1.4';
+const ip = '192.168.1.7';
+// const ip = '10.152.98.106';
 const port = '3000';
 const socket = io.connect(`http://${ip}:${port}`);
 
 socket.on('connect', function() {
 	socket.emit('join', 'Hello World from Water Table Virtual Controller');
-});
-
-socket.on('event', function(data) {
-	console.log(data);
 });
 
 const controller = document.getElementById('controller');
@@ -23,18 +20,24 @@ const ControllerSet = (btns, id) => {
 	const temp = document.createElement('div');
 	const label = document.createElement('span');
 	label.className = 'label';
-	label.innerText = `#${id}`;
+	label.innerText = `${id}`;
 	temp.id = id;
 	temp.className = 'controller-set';
 	temp.appendChild(label);
 	
 	btns.forEach(({ id, text, callback}) => {
+		let group = document.createElement('div');
 		let btn = document.createElement('button');
+		let label = document.createElement('div');
 		btn.id = id;
-		btn.innerText = text;
+		label.innerText = text;
 		btn.className = 'btn';
+		group.className = 'button-group';
+		label.className = 'button-label';
 		btn.addEventListener('click', callback);
-		temp.appendChild(btn);
+		group.appendChild(label);
+		group.appendChild(btn);
+		temp.appendChild(group);
 	});
 	
 	return temp;
@@ -46,15 +49,48 @@ const toggle = [
 	{
 		id: 'toggle-dataviz',
 		name: 'toggle data layer',
-		text: 'off',
-		callback(e) {
+		text: 'Toggle',
+		callback() {
 			socket.emit('controller', {
 				event: 'toggle-screen'
 			});
-			e.currentTarget.innerText = e.currentTarget.innerText === 'off' ? 'on' : 'off';
+		}
+	},
+	{
+		id: 'change-data-layer-all',
+		name: 'data-layer-info',
+		text: 'All',
+		callback() {
+			socket.emit('controller', {
+				event: 'change-data-layer',
+				payload: 0,
+			});
+		}
+	},
+	{
+		id: 'change-data-layer-rivers',
+		name: 'data-layer-info',
+		text: 'Rivers',
+		callback() {
+			socket.emit('controller', {
+				event: 'change-data-layer',
+				payload: 3,
+			});
+		}
+	},
+	{
+		id: 'change-data-layer-population',
+		name: 'data-layer-landscape',
+		text: 'Population',
+		callback() {
+			socket.emit('controller', {
+				event: 'change-data-layer',
+				payload: 6,
+			});
 		}
 	},
 ];
+
 // video buttons
 const video = [
 	{
@@ -68,9 +104,10 @@ const video = [
 			});
 		}
 	},
+	
 	{
-		id: 'seek-video-start',
-		name: 'seek video to start',
+		id: 'seek-video-60',
+		name: 'seek video to 1960',
 		text: '1960',
 		callback() {
 			socket.emit('controller', {
@@ -80,9 +117,9 @@ const video = [
 		}
 	},
 	{
-		id: 'seek-video-middle',
-		name: 'seek video to 1950',
-		text: '1980',
+		id: 'seek-video-70',
+		name: 'seek video to 1970',
+		text: '1970',
 		callback() {
 			socket.emit('controller', {
 				event: 'seek-video',
@@ -91,8 +128,41 @@ const video = [
 		}
 	},
 	{
-		id: 'seek-video-end',
+		id: 'seek-video-80',
+		name: 'seek video to 1980',
+		text: '1980',
+		callback() {
+			socket.emit('controller', {
+				event: 'seek-video',
+				payload: 6,
+			});
+		}
+	},
+	{
+		id: 'seek-video-90',
+		name: 'seek video to 1990',
+		text: '1990',
+		callback() {
+			socket.emit('controller', {
+				event: 'seek-video',
+				payload: 9,
+			});
+		}
+	},
+	{
+		id: 'seek-video-00',
 		name: 'seek video to 2000',
+		text: '2000',
+		callback() {
+			socket.emit('controller', {
+				event: 'seek-video',
+				payload: 12,
+			});
+		}
+	},
+	{
+		id: 'seek-video-10',
+		name: 'seek video to 1990',
 		text: '2010',
 		callback() {
 			socket.emit('controller', {
@@ -101,13 +171,14 @@ const video = [
 			});
 		}
 	},
+	
 ];
 // svg buttons
 const svgs = [
 	{
-		id: 'svg-topography',
-		name: 'show topography layer',
-		text: 'topography',
+		id: 'svg-landscape',
+		name: 'show landscape layer',
+		text: 'Landscape',
 		callback() {
 			socket.emit('controller', {
 				event: 'svg-1',
@@ -116,9 +187,9 @@ const svgs = [
 		}
 	},
 	{
-		id: 'svg-labels',
-		name: 'show labels layer',
-		text: 'info',
+		id: 'svg-info',
+		name: 'show information layer',
+		text: 'Information',
 		callback() {
 			socket.emit('controller', {
 				event: 'svg-2',
@@ -127,20 +198,7 @@ const svgs = [
 		}
 	}
 ];
-const misc = [
-	{
-		id: 'resize-dashboard',
-		name: 'resize dashboard',
-		text: 'resize',
-		callback() {
-			socket.emit('controller', {
-				event: 'resize-dashboard',
-			});
-		}
-	}
-];
 
-controller.appendChild(ControllerSet(toggle, 'visualization-controls'));
-controller.appendChild(ControllerSet(video, 'video-controls'));
-controller.appendChild(ControllerSet(svgs, 'svg-controls'));
-controller.appendChild(ControllerSet(misc, 'misc-controls'));
+controller.appendChild(ControllerSet(toggle, 'Data Visualization Controls'));
+controller.appendChild(ControllerSet(video, 'Timeline'));
+controller.appendChild(ControllerSet(svgs, 'Info'));
