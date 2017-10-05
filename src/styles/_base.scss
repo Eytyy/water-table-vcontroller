@@ -1,0 +1,51 @@
+@font-face {
+	font-family: 'ZeitungMonoPro-Bold';
+	src: url('../fonts/ZeitungMonoPro-Bold.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/ZeitungMonoPro-Bold.woff2') format('woff2'),
+		 url('../fonts/ZeitungMonoPro-Bold.woff') format('woff'),
+		 url('../fonts/ZeitungMonoPro-Bold.ttf') format('truetype'),
+		 url('../fonts/ZeitungMonoPro-Bold.svg#ZeitungMonoPro-Bold') format('svg');
+}
+
+ 
+@font-face {
+	font-family: 'ZeitungMonoPro-Reg';
+	src: url('../fonts/ZeitungMonoPro-Regular.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/ZeitungMonoPro-Regular.woff2') format('woff2'),
+		 url('../fonts/ZeitungMonoPro-Regular.woff') format('woff'),
+		 url('../fonts/ZeitungMonoPro-Regular.ttf') format('truetype'),
+		 url('../fonts/ZeitungMonoPro-Regular.svg#ZeitungMonoPro-Regular') format('svg');
+}
+
+%bold-font  {
+	font-family: 'ZeitungMonoPro-Bold';
+	font-weight: normal;
+    font-style: normal;
+}
+
+
+%regular-font {
+	font-family: 'ZeitungMonoPro-Reg';
+	font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  @extend %regular-font;
+  background: #000;
+  color: #FFF;
+  margin: 0;
+	padding: 40px 40px 60px 60px;
+	height: calc(100vh - 50px);
+	overflow: hidden;
+}
+ 
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+

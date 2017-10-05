@@ -1,0 +1,13 @@
+.messages {
+  opacity: 0;
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  width: 400px;
+  height: 100px;
+  right: 40px;
+  top: 75px;
+  transition: opacity 400ms linear;
+  color: #FFF;
+  padding: 20px;
+  border-radius: 5px;
+}

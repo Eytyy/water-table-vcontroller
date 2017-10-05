@@ -1,0 +1,82 @@
+
+.controller__group {
+  margin-bottom: 50px;
+}
+
+.button-group {
+  display: inline-block;
+  margin-right: 100px;
+  text-align: center;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.button-label {
+  margin-bottom: 15px;
+  font-size: 18px;
+  display: block;
+}
+
+.btn {
+  position: relative;
+  appearance: none;
+  background: #FFF;
+  border: 1px solid #FFF;
+  color: #FFF;
+  font-size: 16x;
+  font-family: Courier New, Courier, monospace;
+  display: inline-block;
+  border-radius: 100%;
+  padding: 0;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+}
+
+.label {
+  color: #FFF;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.controller-set {
+  display: block;
+  margin-bottom: 40px;
+}
+
+.common {
+  display: flex;
+  opacity: 0;
+  transition: opacity 300ms linear;
+  justify-content: space-between;
+}
+  
+
+.start .button-group {
+	position: relative;
+	&:before {
+    content: '';
+    display: block;
+    width: 110px;
+    height: 110px;
+    border: 1px solid #FFF;
+    border-radius: 100%;
+    position: absolute;
+    top: 32px;
+    left: -6px;
+	}
+}
+
+.common {
+  .btn {
+    width: 140px;
+    height: 140px;
+  }
+  .button-group:nth-child(2) {
+    margin-left: -70px;
+  }
+}
